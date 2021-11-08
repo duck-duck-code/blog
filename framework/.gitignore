@@ -1,6 +1,10 @@
+.env
+ormconfig.json
+
 # compiled output
 /dist
 /node_modules
+/pg_blog
 
 # Logs
 logs
