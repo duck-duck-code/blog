@@ -36,13 +36,13 @@ namespace Blog.Controllers
             return NoContent();
         }
 
-        [HttpPost("users")]
-        public async Task<IActionResult> Get([FromBody] UserFilter filter)
+        [HttpGet("users")]
+        public async Task<IActionResult> Get([FromQuery] int id, [FromQuery] string name, [FromQuery] string email)
         {
             var user = await _context.Users
-                .Where(u => u.Id == filter.Id || 
-                            u.Name == filter.Name || 
-                            u.Email == filter.Email).FirstOrDefaultAsync();
+                .Where(u => u.Id == id || 
+                            u.Name == name || 
+                            u.Email == email).FirstOrDefaultAsync();
 
             if (user is null)
                 return NotFound();
